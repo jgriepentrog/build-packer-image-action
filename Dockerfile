@@ -15,6 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && rm -f $ORACLE_VBOX_KEY \
   && apt-get -y update \
   && apt-get -y install virtualbox-6.1 \
+  && dmesg \
   && apt-get -y autoremove \
   && apt-get -y clean
 

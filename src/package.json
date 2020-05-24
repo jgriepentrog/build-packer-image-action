@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "This action builds a Packer image from a given template. Includes Vagrant so a box can be created if desired.",
   "main": "index.js",
+  "config": {
+    "distDir": "../dist"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js"
+    "build": "rm -Rf ${npm_package_config_distDir} && ncc build index.js -o ${npm_package_config_distDir}/index.js"
   },
   "repository": {
     "type": "git",

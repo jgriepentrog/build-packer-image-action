@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const { execSync } = require("child_process");
 
 try {
-  console.log(execSync('sudo apt-get -y install build-essential virtualbox-6.1'))
+  console.log(execSync('sudo apt-get -y install build-essential'))
   
   const template = core.getInput('template');
   console.log(`Building template ${template}...`);

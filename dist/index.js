@@ -507,7 +507,7 @@ const github = __webpack_require__(469);
 const { execSync } = __webpack_require__(129);
 
 try {
-  console.log(execSync('sudo apt-get -y install build-essential').toString())
+  console.log(execSync('./prep.sh').toString())
   
   const template = core.getInput('template');
   console.log(`Building template ${template}...`);

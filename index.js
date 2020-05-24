@@ -34,7 +34,7 @@ const main = async () => {
   
   const template = core.getInput('template')
   console.log(`===Building template ${template}===`)
-  await execCmd('./scripts/build.sh')
+  await execCmd(`./scripts/build.sh ${template}`)
 
   const time = (new Date()).toTimeString()
   core.setOutput("time", time)

@@ -4,6 +4,7 @@ FROM ubuntu:18.04
 RUN export DEBIAN_FRONTEND=noninteractive \
   && export DIST=bionic \
   && export ORACLE_VBOX_KEY=oracle_vbox_2016.asc \
+  && depmod -a \
   && apt-get -y update \
   && apt-get -y install apt-utils \
   && apt-get -y upgrade \
@@ -15,7 +16,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && rm -f $ORACLE_VBOX_KEY \
   && apt-get -y update \
   && apt-get -y install virtualbox-6.1 \
-  && dmesg \
   && apt-get -y autoremove \
   && apt-get -y clean
 

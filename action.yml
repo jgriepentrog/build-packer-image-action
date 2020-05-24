@@ -11,4 +11,4 @@ outputs:
     description: 'Time the image build started at'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'

@@ -57,7 +57,7 @@ source "virtualbox-iso" "vbox" {
     " noprompt",
     " automatic-ubiquity",
     ## Set up clock/timezone ##
-    " time/zone=${var.timezone}",
+    " time/zone=US/Central",
     ## Set up user ##
     " passwd/root-login=true", # Per base box requirements
     " passwd/root-password=${local.password}", # Per base box requirements

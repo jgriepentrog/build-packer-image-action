@@ -13,7 +13,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: packer-build
         with:
-          template: 'test.pkr.hcl'
+          template: 'test/test.pkr.hcl'
       # Use the output from the `hello` step
       - name: Get the build start time time
         run: echo "Build was completed at ${{ steps.packer-build.outputs.time }}"

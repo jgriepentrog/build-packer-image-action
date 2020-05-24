@@ -8,7 +8,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install apt-utils \
   && apt-get -y upgrade \
   && apt-get -y install wget gnupg2 \
-  && apt-get -y install build-essential linux-headers-azure systemd \
+  && apt-get -y install build-essential linux-headers-$(uname -r) systemd \
   && echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian ${DIST} contrib" > /etc/apt/sources.list.d/virtualbox.list \
   && wget "https://www.virtualbox.org/download/${ORACLE_VBOX_KEY}" \
   && apt-key add $ORACLE_VBOX_KEY \

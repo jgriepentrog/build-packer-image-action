@@ -504,25 +504,54 @@ module.exports = require("os");
 
 const core = __webpack_require__(470);
 const github = __webpack_require__(469);
-const { execSync } = __webpack_require__(129);
+const { exec } = __webpack_require__(129);
 
-try {
+const execCmd = async (cmd) => {
+  const runningCmd = exec(cmd);
+
+  runningCmd.stdout.on('data', (data) => {
+    console.log(data.toString());
+  });
+
+  runningCmd.stderr.on('data', (data) => {
+    console.log(data.toString());
+  });
+
+  return new Promise((resolve, reject) => {
+    runningCmd.on('err', (err) => {
+      console.log(err);
+    })
+
+    runningCmd.on('exit', (code) => {
+      if (code === 0) {
+        resolve()
+      } else {
+        reject(code)
+      }
+    })
+  })
+}
+
+const main = async () => {
   console.log("===Preparing for build===")
-  console.log(execSync('./scripts/prep.sh').toString())
+  await execCmd('./scripts/prep.sh')
   
-  const template = core.getInput('template');
-  console.log(`===Building template ${template}===`);
-  console.log(execSync('./scripts/build.sh').toString())
+  const template = core.getInput('template')
+  console.log(`===Building template ${template}===`)
+  await execCmd('./scripts/build.sh')
 
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
+  const time = (new Date()).toTimeString()
+  core.setOutput("time", time)
 
   // Get the JSON webhook payload for the event that triggered the workflow
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
 }
+
+main()
+  .catch((error) => {
+    core.setFailed(error.message)
+  })
 
 /***/ }),
 

@@ -6,9 +6,9 @@ inputs:
     description: 'Template to build'
     required: true
     default: 'template.pkr.hcl'
-#outputs:
-#  time:
-#    description: 'The time we greeted you'
+outputs:
+  time:
+    description: 'Time the image build started at'
 runs:
   using: 'docker'
   image: 'Dockerfile'

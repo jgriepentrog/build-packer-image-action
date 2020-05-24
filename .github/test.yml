@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-18.04
+    name: Test that the action works
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Packer image step
+        uses: ./ # Uses an action in the root directory
+        id: packer-build
+        with:
+          template: 'test.pkr.hcl'
+      # Use the output from the `hello` step
+      - name: Get the build start time time
+        run: echo "Build was started at ${{ steps.packer-build.outputs.time }}"

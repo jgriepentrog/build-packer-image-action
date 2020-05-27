@@ -1,0 +1,30 @@
+{
+  "name": "build-packer-image-action",
+  "version": "1.0.0",
+  "description": "This action builds a Packer image from a given template. Includes Vagrant so a box can be created if desired.",
+  "main": "index.js",
+  "config": {
+    "distDir": "../dist"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -Rf ${npm_package_config_distDir} && ncc build index.js -o ${npm_package_config_distDir}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgriepentrog/build-packer-image-action.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/jgriepentrog/build-packer-image-action/issues"
+  },
+  "homepage": "https://github.com/jgriepentrog/build-packer-image-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  }
+}

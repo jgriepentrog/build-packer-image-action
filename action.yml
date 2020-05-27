@@ -10,7 +10,5 @@ outputs:
   time:
     description: 'Time the image build started at'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.template }}
+  using: 'node12'
+  main: 'dist/index.js'

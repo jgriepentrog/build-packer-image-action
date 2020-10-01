@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jgriepentrog/build-packer-image-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^2.2.0"
   },
   "devDependencies": {
